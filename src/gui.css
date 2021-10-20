@@ -9,7 +9,7 @@ svg {
 }
 
 .Slice {
-    stroke-width: 2px;
+    stroke-width: 1;
     opacity: 0.7;
 }
 
@@ -20,7 +20,8 @@ svg {
 .Lines polyline {
     stroke: #000000;
     fill: none;
-    stroke-width: 1;
+    stroke-width: 2px;
+    opacity: 0.5;
 }
 
 .Year {
