@@ -1,10 +1,13 @@
+
+import {accumulate_amount} from "./helper.js";
+
+
 // setup
 const ZOOM_FACTOR = 0.5;
 const KEY_ID_NUMBER = "anzahl";
 const KEY_ID_NAME = "vorname";
 
-
-const accumulate_amount = database => database.reduce((prev, curr, index, array) => prev + curr[KEY_ID_NUMBER], 0);
+let names_to_visualize = [];
 
 const prepare_dataset_by_index = function (database, index, number_of_places) {
 
@@ -17,11 +20,16 @@ const prepare_dataset_by_index = function (database, index, number_of_places) {
 
     const size = database[current_key].amount;
 
+
+
     const data_snippet = current_dataset.slice(0, number_of_places);
-    const remaining = size - accumulate_amount(data_snippet);
+    console.log(data_snippet);
+
+
+    const remaining = size - accumulate_amount(data_snippet, KEY_ID_NUMBER);
     data_snippet.push({vorname: "sonstige", anzahl: remaining});
 
-    const unique_names = current_dataset.filter(name => name.anzahl === 1);
+    const unique_names = current_dataset.filter(name => name[KEY_ID_NUMBER] === 1);
     data_snippet.push({vorname: "einizgartig", anzahl: unique_names.length});
 
     return {data: data_snippet, size, year: current_key};
@@ -58,10 +66,6 @@ const calculate_mid_angle = arc => arc.startAngle + (arc.endAngle - arc.startAng
 
 const update_donut_chart = function (chart, dataset) {
 
-    const COLOR_SCALE = d3.scaleOrdinal(d3.schemeDark2);
-    const BASE_1000 = d3.transition().duration(1000).ease(d3.easeLinear);
-
-
     const prepared_data = dataset.data;
     console.log(prepared_data);
 
@@ -73,86 +77,50 @@ const update_donut_chart = function (chart, dataset) {
         .value(d => d[KEY_ID_NUMBER])
         (prepared_data);
 
+    // TODO add new domain names if available
+    const COLOR_SCALE = d3.scaleOrdinal(d3.schemeCategory10);
+
     const inner_arc = d3.arc()
         .innerRadius(radius * 0.5) // size of donut hole
         .outerRadius(radius * 0.8);
     
-    const labels_arc = d3.arc()
+    const label_arc = d3.arc()
         .innerRadius(radius * 0.9)
         .outerRadius(radius * 0.9);
 
     const slices = chart.select(".Slices").selectAll("path.Slice")
         .data(data_as_arcs);
 
+
     slices
         .enter()
         .append("path")
         .attr("class", "Slice")
         .merge(slices)
-        // .attr("stroke", "white")
-        .transition(BASE_1000)
         .style("fill", color => COLOR_SCALE(color))
+        .transition().duration(1000)
         .attr("d", inner_arc);
-
-    slices.exit()
-        .remove();
 
     const lines = chart.select(".Lines").selectAll("polyline")
         .data(data_as_arcs);
     
     lines.enter()
-        .append("polyline");
-    
-    lines.transition(BASE_1000)
-        .attrTween("points", function (d) {
-            this._current = this._current || d;
-			const interpolate = d3.interpolate(this._current, d);
-			this._current = interpolate(0);
-			return function(t) {
-				const d2 = interpolate(t);
-				const pos = labels_arc.centroid(d2);
-				pos[0] = radius * 0.95 * (calculate_mid_angle(d2) < Math.PI ? 1 : -1);
-				return [inner_arc.centroid(d2), labels_arc.centroid(d2), pos];
-			};			
-        });
-
-    lines
-        .exit()
-        .remove();
+        .append("polyline")
+        .merge(lines)
+        .transition().duration(1000)
+            .attr('points', d => [inner_arc.centroid(d), label_arc.centroid(d)]);
     
     const labels = chart.select(".Labels").selectAll("text")
         .data(data_as_arcs);
-    console.log(data_as_arcs);
 
     labels.enter()
         .append("text")
+        .merge(labels)
         .attr("dy", ".3em") // HARD CODED
-        .text(d => d.data[KEY_ID_NAME]);
-
-    labels.transition(BASE_1000)
-        .attrTween("transform", function (d) {
-            this._current = this._current || d;
-			const interpolate = d3.interpolate(this._current, d);
-			this._current = interpolate(0);
-			return function (t) {
-				var d2 = interpolate(t);
-				var pos = labels_arc.centroid(d2);
-				pos[0] = radius * (calculate_mid_angle(d2) < Math.PI ? 1 : -1);
-				return "translate("+ pos +")";
-			};
-        }).styleTween("text-anchor", function(d){
-			this._current = this._current || d;
-			const interpolate = d3.interpolate(this._current, d);
-			this._current = interpolate(0);
-			return function(t) {
-				var d2 = interpolate(t);
-				return calculate_mid_angle(d2) < Math.PI ? "start":"end";
-			};
-		});
-
-    labels
-        .exit()
-        .remove();
+        .transition().duration(1000)
+        .text(d => d.data[KEY_ID_NAME])
+            .attr('transform', d => `translate(${label_arc.centroid(d)})`)
+            .style('text-anchor', d => calculate_mid_angle(d) < Math.PI ? "start" : "end");
 
     chart.select(".Year")
         .text(dataset.year);
@@ -165,14 +133,11 @@ const visualize = function (database, maximum) {
 
     const donut_chart = setup_donut_chart(maximum);
 
-    const variety_data = [];
     let i = 0;
     const chart_animation_timer = d3.timer((elapsed) => {
 
         if (elapsed > 2000 * i) {
             const dataset = prepare_dataset_by_index(database, i, 3);
-
-            variety_data.push({year: dataset.year, ratio: database[dataset.year].names.length / dataset.size});
 
             update_donut_chart(donut_chart, dataset);
             i = i + 1;
