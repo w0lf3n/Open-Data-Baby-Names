@@ -9,6 +9,10 @@ import * as LineChart from "./line_chart.js";
 const KEY_ID_NUMBER = "anzahl";
 const KEY_ID_NAME = "vorname";
 
+const basic_data_preparation = function (data) {
+
+};
+
 
 get_data_from_backup().then(loaded_data => {
 

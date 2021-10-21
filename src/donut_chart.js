@@ -7,23 +7,35 @@ const ZOOM_FACTOR = 0.5;
 const KEY_ID_NUMBER = "anzahl";
 const KEY_ID_NAME = "vorname";
 
-let names_to_visualize = [];
-
+const legacy_names = [];
 const prepare_dataset_by_index = function (database, index, number_of_places) {
 
     const current_key = Object.keys(database)[index];
-
+    /** @type {Array} */
     let current_dataset = database[current_key].names;
     if (current_dataset[0].hasOwnProperty("position")) {
         current_dataset = current_dataset.filter(name => name.position === 1);
     }
-
     const size = database[current_key].amount;
 
+    const data_snippet = legacy_names.map(name => current_dataset.find(elem => elem[KEY_ID_NAME] === name));
 
+    console.log("legacy: " + JSON.stringify(legacy_names));
+    console.log("snippet: " + JSON.stringify(data_snippet));
 
-    const data_snippet = current_dataset.slice(0, number_of_places);
-    console.log(data_snippet);
+    if (number_of_places > current_dataset.length) {
+        number_of_places = current_dataset.length;
+    }
+    for (let i = 0; i < number_of_places; i = i + 1) {
+        const temp_data = current_dataset[i];
+        const temp_name = temp_data[KEY_ID_NAME];
+        if (!legacy_names.includes(temp_name)) {
+            legacy_names.push(temp_name);
+            data_snippet.push(temp_data);
+        }
+    }
+    console.log("legacy: " + JSON.stringify(legacy_names));
+    console.log("snippet: " + JSON.stringify(data_snippet));
 
 
     const remaining = size - accumulate_amount(data_snippet, KEY_ID_NUMBER);
@@ -67,7 +79,7 @@ const calculate_mid_angle = arc => arc.startAngle + (arc.endAngle - arc.startAng
 const update_donut_chart = function (chart, dataset) {
 
     const prepared_data = dataset.data;
-    console.log(prepared_data);
+    console.log(JSON.stringify(prepared_data));
 
     const side = calculate_side(dataset.size);
     const margin = 50;
@@ -137,10 +149,12 @@ const visualize = function (database, maximum) {
     const chart_animation_timer = d3.timer((elapsed) => {
 
         if (elapsed > 2000 * i) {
+
             const dataset = prepare_dataset_by_index(database, i, 3);
 
             update_donut_chart(donut_chart, dataset);
             i = i + 1;
+            
             // chart_animation_timer.stop();
         }
 
