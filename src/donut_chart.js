@@ -7,6 +7,7 @@ const ZOOM_FACTOR = 0.5;
 const KEY_ID_NUMBER = "anzahl";
 const KEY_ID_NAME = "vorname";
 
+
 const legacy_names = [];
 const prepare_dataset_by_index = function (database, index, number_of_places) {
 
@@ -49,7 +50,7 @@ const prepare_dataset_by_index = function (database, index, number_of_places) {
 
 const calculate_side = (number) => (number * ZOOM_FACTOR) / Math.sqrt(2);
 
-// add title
+// TODO add title
 const setup_donut_chart = function (diagonal) {
 
     const side = calculate_side(diagonal);
@@ -58,6 +59,10 @@ const setup_donut_chart = function (diagonal) {
 	    .append("svg")
         .attr("width", side)
         .attr("height", side);
+    
+    chart_container.append("g")
+        .attr("class", "Legend")
+        .attr("transform", "translate(" + (side - 150) + "," + 50 + ")");
 
 	const main_graph = chart_container.append("g")
         .attr("transform", "translate(" + side / 2 + "," + side / 2 + ")");
@@ -68,9 +73,10 @@ const setup_donut_chart = function (diagonal) {
         .attr("class", "Labels");
     main_graph.append("g")
         .attr("class", "Lines");
+
     main_graph.append("text")
         .attr("class", "Year");
-
+    
     return chart_container;
 };
 
@@ -85,12 +91,14 @@ const update_donut_chart = function (chart, dataset) {
     const margin = 50;
     const radius = side / 2 - margin;
 
+    const color_domain = ["sonstige", "einzigartig", ...legacy_names];
+    const color_scale = d3.scaleOrdinal()
+        .domain(color_domain)
+        .range(d3.schemeSet2);
+
     const data_as_arcs = d3.pie()
         .value(d => d[KEY_ID_NUMBER])
         (prepared_data);
-
-    // TODO add new domain names if available
-    const COLOR_SCALE = d3.scaleOrdinal(d3.schemeCategory10);
 
     const inner_arc = d3.arc()
         .innerRadius(radius * 0.5) // size of donut hole
@@ -103,13 +111,12 @@ const update_donut_chart = function (chart, dataset) {
     const slices = chart.select(".Slices").selectAll("path.Slice")
         .data(data_as_arcs);
 
-
     slices
         .enter()
         .append("path")
         .attr("class", "Slice")
         .merge(slices)
-        .style("fill", color => COLOR_SCALE(color))
+        .style("fill", d => color_scale(d))
         .transition().duration(1000)
         .attr("d", inner_arc);
 
@@ -134,6 +141,28 @@ const update_donut_chart = function (chart, dataset) {
             .attr('transform', d => `translate(${label_arc.centroid(d)})`)
             .style('text-anchor', d => calculate_mid_angle(d) < Math.PI ? "start" : "end");
 
+    const legend = chart.select(".Legend");
+
+    legend.selectAll("circle")
+        .data(color_scale.domain())
+        .enter()
+        .append("circle")
+            .attr("cx", 0)
+            .attr("cy", function(d,i){ return i * 25})
+            .attr("r", 7)
+            .style("fill", d => color_scale(d));
+
+    legend.selectAll("text")
+        .data(color_scale.domain())
+        .enter()
+        .append("text")
+            .attr("x", 20)
+            .attr("y", function(d,i){ return 5 + i * 25})
+            .style("fill", d => color_scale(d))
+            .text(d => d)
+            .attr("text-anchor", "left")
+            .style("alignment-baseline", "middle");
+
     chart.select(".Year")
         .text(dataset.year);
 };
@@ -155,7 +184,7 @@ const visualize = function (database, maximum) {
             update_donut_chart(donut_chart, dataset);
             i = i + 1;
             
-            // chart_animation_timer.stop();
+            chart_animation_timer.stop();
         }
 
         if (i >= length) {
