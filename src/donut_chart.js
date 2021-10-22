@@ -8,18 +8,26 @@ const KEY_ID_NUMBER = "anzahl";
 const KEY_ID_NAME = "vorname";
 
 
-const legacy_names = [];
+/** @type {Array<string>} */
+let legacy_names = [];
+const LEGACY_TRESHOLD = 10;
 const prepare_dataset_by_index = function (database, index, number_of_places) {
 
     const current_key = Object.keys(database)[index];
+
     /** @type {Array} */
     let current_dataset = database[current_key].names;
     if (current_dataset[0].hasOwnProperty("position")) {
         current_dataset = current_dataset.filter(name => name.position === 1);
     }
-    const size = database[current_key].amount;
 
-    const data_snippet = legacy_names.map(name => current_dataset.find(elem => elem[KEY_ID_NAME] === name));
+    const data_snippet = [];
+    legacy_names.forEach(name => {
+        const foundItem = current_dataset.find(elem => elem[KEY_ID_NAME] === name && elem[KEY_ID_NUMBER] >= LEGACY_TRESHOLD);
+        if (foundItem) {
+            data_snippet.push(foundItem);
+        }
+    });
 
     console.log("legacy: " + JSON.stringify(legacy_names));
     console.log("snippet: " + JSON.stringify(data_snippet));
@@ -31,14 +39,15 @@ const prepare_dataset_by_index = function (database, index, number_of_places) {
         const temp_data = current_dataset[i];
         const temp_name = temp_data[KEY_ID_NAME];
         if (!legacy_names.includes(temp_name)) {
-            legacy_names.push(temp_name);
             data_snippet.push(temp_data);
         }
     }
+    legacy_names = data_snippet.map(elem => elem[KEY_ID_NAME]);
+
     console.log("legacy: " + JSON.stringify(legacy_names));
     console.log("snippet: " + JSON.stringify(data_snippet));
 
-
+    const size = database[current_key].amount;
     const remaining = size - accumulate_amount(data_snippet, KEY_ID_NUMBER);
     data_snippet.push({vorname: "sonstige", anzahl: remaining});
 
@@ -94,7 +103,10 @@ const update_donut_chart = function (chart, dataset) {
     const color_domain = ["sonstige", "einzigartig", ...legacy_names];
     const color_scale = d3.scaleOrdinal()
         .domain(color_domain)
+    // TODO try to reduce scheme/range to size of domain
         .range(d3.schemeSet2);
+    console.log(color_scale.domain(), color_scale.range());
+    console.log(color_scale("einzigartig"), color_scale("einzigartig"), color_scale("einzigartig"), color_scale("einzigartig"));
 
     const data_as_arcs = d3.pie()
         .value(d => d[KEY_ID_NUMBER])
@@ -110,13 +122,13 @@ const update_donut_chart = function (chart, dataset) {
 
     const slices = chart.select(".Slices").selectAll("path.Slice")
         .data(data_as_arcs);
-
+    // console.log(color_scale("Sophie"));
     slices
         .enter()
         .append("path")
         .attr("class", "Slice")
         .merge(slices)
-        .style("fill", d => color_scale(d))
+        .style("fill", d => {console.log(d.data[KEY_ID_NAME], color_scale(d.data[KEY_ID_NAME])); return color_scale(d.data[KEY_ID_NAME]);})
         .transition().duration(1000)
         .attr("d", inner_arc);
 
@@ -144,21 +156,21 @@ const update_donut_chart = function (chart, dataset) {
     const legend = chart.select(".Legend");
 
     legend.selectAll("circle")
-        .data(color_scale.domain())
+        .data(color_domain)
         .enter()
         .append("circle")
             .attr("cx", 0)
             .attr("cy", function(d,i){ return i * 25})
             .attr("r", 7)
-            .style("fill", d => color_scale(d));
-
+            .style("fill", d => {console.log(d, color_scale(d)); return color_scale(d);});
+    // console.log(color_scale("Sophie"));
     legend.selectAll("text")
-        .data(color_scale.domain())
+        .data(color_domain)
         .enter()
         .append("text")
             .attr("x", 20)
             .attr("y", function(d,i){ return 5 + i * 25})
-            .style("fill", d => color_scale(d))
+            .style("fill", d => {console.log(d, color_scale(d)); return color_scale(d);})
             .text(d => d)
             .attr("text-anchor", "left")
             .style("alignment-baseline", "middle");
@@ -184,7 +196,7 @@ const visualize = function (database, maximum) {
             update_donut_chart(donut_chart, dataset);
             i = i + 1;
             
-            chart_animation_timer.stop();
+            // chart_animation_timer.stop();
         }
 
         if (i >= length) {
