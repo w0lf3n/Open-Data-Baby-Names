@@ -1,7 +1,5 @@
 # Open Data Baby Names
 
-[![licenses][licenses]][licenses-url]
-
 Analyze and visualize baby names from open data.
 
 ## Demo
