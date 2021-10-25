@@ -21,7 +21,7 @@ const createObject = function (...key_value_pairs) {
 
 /** @type {Array<string>} */
 let legacy_names = [];
-const LEGACY_TRESHOLD = 10;
+const LEGACY_TRESHOLD = 20;
 const prepare_dataset_by_index = function (current_dataset, key, maximum, number_of_places) {
 
     if (current_dataset[0].hasOwnProperty(Keys.range.key)) {
@@ -36,9 +36,6 @@ const prepare_dataset_by_index = function (current_dataset, key, maximum, number
         }
     });
 
-    console.log("legacy: " + JSON.stringify(legacy_names));
-    console.log("snippet: " + JSON.stringify(data_snippet));
-
     if (number_of_places > current_dataset.length) {
         number_of_places = current_dataset.length;
     }
@@ -49,20 +46,20 @@ const prepare_dataset_by_index = function (current_dataset, key, maximum, number
             data_snippet.push(temp_data);
         }
     }
+    data_snippet.sort((a, b) => a[Keys.quantity.key] < b[Keys.quantity.key]);
     legacy_names = data_snippet.map(elem => elem[Keys.id.key]);
-
-    console.log("legacy: " + JSON.stringify(legacy_names));
-    console.log("snippet: " + JSON.stringify(data_snippet));
+    
 
     // TODO replace "sonstige" with variable
+    const aggregations = [];
     const remaining = maximum - accumulate_amount(data_snippet, Keys.quantity.key);
-    data_snippet.push(createObject(Keys.id.key, "sonstige", Keys.quantity.key, remaining));
+    aggregations.push(createObject(Keys.id.key, "sonstige", Keys.quantity.key, remaining));
 
     // TODO replace "einzigartig" with variable
     const unique_names = current_dataset.filter(set => set[Keys.quantity.key] === 1);
-    data_snippet.push(createObject(Keys.id.key, "einzigartig", Keys.quantity.key, unique_names.length));
+    aggregations.push(createObject(Keys.id.key, "einzigartig", Keys.quantity.key, unique_names.length));
 
-    return {data: data_snippet, size: maximum, title: key};
+    return {data: data_snippet, aggs: aggregations, size: maximum, title: key};
 };
 
 const calculate_side = (number) => (number * ZOOM_FACTOR) / Math.sqrt(2);
@@ -103,19 +100,21 @@ const color_scale = d3.scaleOrdinal(d3.schemeTableau10);
 
 const update_donut_chart = function (dataset) {
 
-    const prepared_data = dataset.data;
-    console.log(JSON.stringify(prepared_data));
+    const whole_data = [...dataset.aggs, ...dataset.data];
 
     const side = calculate_side(dataset.size);
     const margin = 50;
     const radius = side / 2 - margin;
 
-    // TODO replace strings with integer
-    color_scale.domain(["sonstige", "einzigartig", ...legacy_names]);
+    // console.log(dataset.title, JSON.stringify(dataset.data));
+    // console.log(dataset.title, JSON.stringify(whole_data));
+
+    color_scale.domain([...whole_data.map(elem => elem[Keys.id.key])]);
 
     const data_as_arcs = d3.pie()
         .value(d => d[Keys.quantity.key])
-        (prepared_data);
+        (whole_data);
+    // console.log(data_as_arcs);
 
     const inner_arc = d3.arc()
         .innerRadius(radius * 0.5) // size of donut hole
@@ -127,58 +126,63 @@ const update_donut_chart = function (dataset) {
 
     const slices = Chart.select(".Slices").selectAll("path.Slice")
         .data(data_as_arcs);
-    // console.log(color_scale("Sophie"));
+
     slices
         .enter()
         .append("path")
-        .attr("class", "Slice")
+            .attr("class", "Slice")
+            .style("fill", d => color_scale(d.data[Keys.id.key]))
+            .attr("d", inner_arc)
         .merge(slices)
-        .style("fill", d => color_scale(d.data[Keys.id.key]))
-        .transition().duration(1000)
-        .attr("d", inner_arc);
+            .style("fill", d => color_scale(d.data[Keys.id.key]))
+            // transition().duration(750).attrTween("d", d => {
+            //     const interpolate = d3.interpolate(this._current, d);
+            //     this._current = interpolate(0);
+            //     return t => arc(interpolate(t));
+            // })
+            .attr("d", inner_arc);
 
-    // const lines = Chart.select(".Lines").selectAll("polyline")
-    //     .data(data_as_arcs);
-    
-    // lines.enter()
-    //     .append("polyline")
-    //     .merge(lines)
-    //     .transition().duration(1000)
-    //         .attr('points', d => [inner_arc.centroid(d), label_arc.centroid(d)]);
-    
-    // const labels = Chart.select(".Labels").selectAll("text")
-    //     .data(data_as_arcs);
+    slices
+        .exit()
+        .remove();
 
-    // labels.enter()
-    //     .append("text")
-    //     .merge(labels)
-    //     .attr("dy", ".3em") // HARD CODED
-    //     .transition().duration(1000)
-    //     .text(d => d.data[Keys.id.key])
-    //         .attr('transform', d => `translate(${label_arc.centroid(d)})`)
-    //         .style('text-anchor', d => calculate_mid_angle(d) < Math.PI ? "start" : "end");
+    const labels = Chart.select(".Labels").selectAll("text")
+        .data(dataset.aggs);
 
-    const legend = Chart.select(".Legend");
+    labels.enter()
+        .append("text")
+        .merge(labels)
+        .attr("dy", ".3em") // HARD CODED
+        .text(d => `${d[Keys.id.key]} (${d[Keys.quantity.key]})`)
+            .attr('transform', d => `translate(${label_arc.centroid(data_as_arcs.find(arc => arc.data[Keys.id.key] === d[Keys.id.key]))})`);
 
-    legend.selectAll("circle")
-        .data(color_scale.domain())
-        .enter()
+    const legend_circles = Chart.select(".Legend").selectAll("circle")
+        .data(dataset.data);
+    legend_circles
+        .enter() 
         .append("circle")
             .attr("cx", 0)
             .attr("cy", (d, i) => i * 25)
             .attr("r", 7)
-            .style("fill", d => color_scale(d));
-    // console.log(color_scale("Sophie"));
-    legend.selectAll("text")
-        .data((color_scale.domain()))
+            .style("fill", d => color_scale(d[Keys.id.key]))
+        .merge(legend_circles);
+    legend_circles.exit().remove();
+
+    const legend_text = Chart.select(".Legend").selectAll("text")
+        .data(dataset.data);
+
+    legend_text
         .enter()
         .append("text")
             .attr("x", 20)
             .attr("y", (d, i) => 5 + i * 25)
-            .style("fill", d => color_scale(d))
-            .text(d => d)
+            .style("fill", d => color_scale(d[Keys.id.key]))
+            .text(d => `${d[Keys.id.key]} (${d[Keys.quantity.key]})`)
             .attr("text-anchor", "left")
-            .style("alignment-baseline", "middle");
+            .style("alignment-baseline", "middle")
+        .merge(legend_text)
+            .text(d => `${d[Keys.id.key]} (${d[Keys.quantity.key]})`)
+    legend_text.exit().remove();
 
     Chart.select(".Year")
         .text(dataset.title);
