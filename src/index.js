@@ -1,27 +1,43 @@
 
-import {accumulate_amount} from "./helper.js";
+
 import {get_data_from_backup} from "./fetchAPI.js";
 
+import * as Controls from "./controls.js";
+import * as DataCenter from "./data_center.js";
+import * as DataTable from "./data_table.js";
 import * as DonutChart from "./donut_chart.js";
 import * as LineChart from "./line_chart.js";
 
 
-
 get_data_from_backup().then(loaded_data => {
+
+    DataCenter.register_data(loaded_data);
+    DataCenter.register_structure(
+        {
+            id: {type: "number"},
+            data: {
+                id: {key: "vorname", type: "nominal"},
+                quantity: {key: "anzahl", type: "quantity"},
+                range: {key: "position", type: "index", max: 1}
+            }
+        }
+    );
+
+    const donut_chart = DonutChart.init({});
+    const line_chart = LineChart.init({});
+    const all_time_favs = DataTable.init({});
+    const controls = Controls.init({});
+
+    // data by year
+    // get data for first year
+    DataCenter.get_dataset(1);
+
+});
 
     // prepare fetched data for donut chart
     // TODO move to donut_chart.js ??
     
     // TODO specify encoding
-    // DonutChart.visualize(
-    //     loaded_data,
-    //     {
-    //         id: {key: "vorname", type: "nominal"},
-    //         quantity: {key: "anzahl", type: "quantity"},
-    //         range: {key: "position", type: "index", max: 1}
-    //     }
-    // );
-    // (basic_data_preparation(loaded_data));
 
     // prepare data for line chart
     // const names_variety = [];
@@ -41,5 +57,3 @@ get_data_from_backup().then(loaded_data => {
 
     // }
     // LineChart.visualize(names_variety);
-
-});
