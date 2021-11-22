@@ -13,14 +13,14 @@ get_data_from_backup().then(loaded_data => {
     // TODO move to donut_chart.js ??
     
     // TODO specify encoding
-    DonutChart.visualize(
-        loaded_data,
-        {
-            id: {key: "vorname", type: "nominal"},
-            quantity: {key: "anzahl", type: "quantity"},
-            range: {key: "position", type: "index", max: 1}
-        }
-    );
+    // DonutChart.visualize(
+    //     loaded_data,
+    //     {
+    //         id: {key: "vorname", type: "nominal"},
+    //         quantity: {key: "anzahl", type: "quantity"},
+    //         range: {key: "position", type: "index", max: 1}
+    //     }
+    // );
     // (basic_data_preparation(loaded_data));
 
     // prepare data for line chart
