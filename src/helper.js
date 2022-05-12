@@ -1,5 +1,10 @@
 
-const accumulate_amount = (database, key) => database.reduce((prev, curr, index, array) => prev + curr[key], 0);
+const has_property = (obj, prop) => Object.prototype.hasOwnProperty.call(obj, prop);
+
+const is_number = (nr) => (typeof nr === "number" && Number.isFinite(nr));
 
 
-export {accumulate_amount};
+export {
+    has_property,
+    is_number
+};
