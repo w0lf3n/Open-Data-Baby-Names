@@ -6,12 +6,16 @@ body {
 
 .Container {
     position: relative;
-    width: fit-content;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .Table {
-    display: inline-block;
+    display: flex;
+    height: 350px;
     margin: 0 10px;
+    flex-direction: column;
+    overflow: hidden;
 }
 .Table .Title {
     margin: 0;
@@ -19,6 +23,40 @@ body {
     text-transform: capitalize;
     text-align: center;
     font-weight: bold;
+}
+.Table .Data {
+    position: relative;
+    width: 300px;
+}
+.Table .Data .Entry {
+    position: absolute;
+    left: 20px;
+    padding: 2px 5px;
+    border-radius: 5px;
+    width: 250px;;
+}
+.Table .Data .Entry .CurrentPosition {
+    text-align: right;
+    width: 25px;
+    display: inline-block;
+}
+.Table .Data .Entry .CurrentPosition::after {
+    content: ".";
+}
+.Table .Data .Entry .BestPosition {
+    margin: 0 5px;
+}
+.Table .Data .Entry .BestPosition::before {
+    content: "(";
+}
+.Table .Data .Entry .BestPosition::after {
+    content: ")";
+}
+.Table .Data .Entry .Change {
+    position: relative;
+    top: -1px;
+    margin-left: 5px;
+    font-size: 1.2em;
 }
 
 .Controls {

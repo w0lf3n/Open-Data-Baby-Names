@@ -96,7 +96,7 @@
 	"boys":[{"name":"Lukas/Lucas","pos":1},{"name":"Alexander","pos":2},{"name":"Maximilian","pos":3},{"name":"Daniel","pos":4},{"name":"Philipp","pos":5},{"name":"Felix","pos":6},{"name":"Tim","pos":7},{"name":"Jan","pos":8},{"name":"Florian","pos":9},{"name":"Jonas","pos":10}]
 },{
 	"year":"1997",
-	"girls":[{"name":"Maria & Marie","pos":1},{"name":"Sophia & Sophie","pos":2},{"name":"Julia","pos":3},{"name":"Laura","pos":4},{"name":"Anna/Anne","pos":5},{"name":"Sara/Sarah","pos":6},{"name":"Lisa","pos":7},{"name":"Katharina","pos":8},{"name":"Vanessa","pos":9},{"name":"Michelle","pos":10}],
+	"girls":[{"name":"Maria/Marie","pos":1},{"name":"Sophia/Sophie","pos":2},{"name":"Julia","pos":3},{"name":"Laura","pos":4},{"name":"Anna/Anne","pos":5},{"name":"Sara/Sarah","pos":6},{"name":"Lisa","pos":7},{"name":"Katharina","pos":8},{"name":"Vanessa","pos":9},{"name":"Michelle","pos":10}],
 	"boys":[{"name":"Alexander","pos":1},{"name":"Maximilian","pos":2},{"name":"Lukas/Lucas","pos":3},{"name":"Philipp","pos":4},{"name":"Daniel","pos":5},{"name":"Jan","pos":6},{"name":"Florian","pos":7},{"name":"Niklas","pos":8},{"name":"Felix","pos":9},{"name":"Dominik","pos":10}]
 },{
 	"year":"1996O",

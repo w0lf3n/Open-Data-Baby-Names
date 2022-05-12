@@ -8,11 +8,13 @@ const COLOR_RED = "#df3062";
 
 let baby_names = null;
 let current_index = null;
-let comparison_result = {};
+const comparison_result = {};
 
 let container = null;
 let girls_table = null;
+let girls_ranking_table = null;
 let boys_table = null;
+let boys_ranking_table = null;
 let display_year = null;
 
 const get_fill_color = (name) => {
@@ -26,16 +28,21 @@ const get_fill_color = (name) => {
     return COLOR_DEFAULT;
 };
 
+/**
+ *
+ * @param {string} name
+ * @param {boolean} initial
+ * 
+ * @returns {{current: string, best: string}}
+ */
 const get_positions = (name, initial = false) => {
     const current = comparison_result[name];
     let best = "-";
-    if (name === "Maria") {
-        console.log(name, current.best, current.now, current.old);
-    }
     if (!initial && current.best > 0 && current.old !== 0) {
         best = current.best;
     }
-    return `${current.now}. (${best})`;
+
+    return {current: String(current.now), best: String(best)};
 };
 
 /**
@@ -59,7 +66,7 @@ const get_change_symbol = (name) => {
 
 const update_comparison = (dataset, initial = false) => {
     dataset.forEach(entry => {
-        const current = comparison_result[entry.name] || null;
+        let current = comparison_result[entry.name] || null;
         if (current) {
             // remember best position
             if (current.now > 0 && current.best > current.now) {
@@ -67,12 +74,16 @@ const update_comparison = (dataset, initial = false) => {
             }
             current.old = current.now;
             current.now = entry.pos;
+            if (current.now === 1) {
+                current.count = current.count + 1;
+            }
         } else {
             // new entry in table
             comparison_result[entry.name] = {
                 best: entry.pos,
                 now: entry.pos,
-                old: (initial) ? entry.pos : 0
+                old: (initial) ? entry.pos : 0,
+                count: (entry.pos === 1) ? 1 : 0
             };
         }
     });
@@ -83,57 +94,51 @@ const update_name_on_exit = (name) => {
 };
 
 const enterRects = (enter, initial = false) => enter
-    .append("g")
-    .attr("transform", (_d, _i) => `translate(${10},${350})`)
+    .append("p")
+    .attr("class", "Entry")
     .style("opacity", 0)
-    .call(g => g.transition().duration(initial ? 0 : 1000)
-        .attr("transform", (_d, i) => `translate(${10},${10 + i * 30})`)
-        .style("opacity", 1))
-    .call(g => g.append("rect")
-        .attr("width", 280)
-        .attr("height", 25)
-        .style("fill", (d, _i) => get_fill_color(d.name))
-        .style("opacity", 0.7)
-        .attr("rx", 3))
-    .call(g => {
-        const text = g.append("text")
-            .attr("x", 5)
-            .attr("dy", "1.2em")
-            .style("font-size", 14)
-            .style("font-family", "sans-serif")
-            .raise();
+    .style("transform", `translateY(${350}px)`)
+    .call(p => {
+        const text = p;
+        p.transition()
+            .duration(initial ? 0 : 1000)
+            .style("transform", (_d, i) => `translateY(${i * 30}px)`)
+            .style("background-color", (d, _i) => get_fill_color(d.name))
+            .style("opacity", 0.7);
 
-        text.append("tspan")
-            .attr("class", "Position").text(d => get_positions(d.name, initial))
-            //.attr("x", d => (d.pos < 10) ? 10 : 0);
-        text.append("tspan").attr("class", "Name")
-            .text(d => d.name)
-            .attr("dx", 10);
-        text.append("tspan").attr("class", "Change");
+        text.append("span").attr("class", "CurrentPosition").text(d => get_positions(d.name).current);
+        text.append("span").attr("class", "BestPosition").text(d => get_positions(d.name, initial).best);
+        text.append("span").attr("class", "Name").text(d => d.name);
+        text.append("span").attr("class", "Change");
     });
 
 const updateRects = (update) => update
-    .call((g) => g.transition().duration(1000).attr("transform", (_d, i) => `translate(${10},${10 + i * 30})`))
-    .call(g => g.select("text tspan.Position").text(d => get_positions(d.name)))
-    .call(g => g.select("text tspan.Name").text(d => d.name))
-    .call(g => g.select("text tspan.Change").text(function (d) {
+    .call(p => p.transition()
+        .duration(1000)
+        .style("transform", (_d, i) => `translateY(${i * 30}px)`)
+        .style("background-color", COLOR_DEFAULT))
+    .call(p => p.select(".CurrentPosition").text(d => get_positions(d.name).current))
+    .call(p => p.select(".BestPosition").text(d => get_positions(d.name).best))
+    .call(p => p.select(".Name").text(d => d.name))
+    .call(p => p.select(".Change").text(function (d) {
         const {symbol, color} = get_change_symbol(d.name);
-        d3.select(this).style("fill", color);
+        d3.select(this).style("color", color);
         return symbol;
-    }))
-    .call(g => g.select("rect").style("fill", () => COLOR_DEFAULT));
+    }));
 
 const exitRects = (exit) => exit
-    .call(g => g.select("rect").style("fill", () => COLOR_RED))
-    .call((g) => g
+    .call(p => p.style("backgroud-color", COLOR_RED))
+    .call(p => p
         .transition()
         .duration(1000)
-        .attr("transform", (d) => { update_name_on_exit(d.name); return `translate(${10},${350})`; })
+        .style("transform", (d) => { update_name_on_exit(d.name); return `translateY(${350}px)`; })
         .style("opacity", 0)
         .remove());
 
 const update_data_table = (table, data, initial = false) => {
-    table.selectAll("g")
+console.log(data);
+
+    table.selectAll("p")
     .data(data, d => d.name)
     .join(
         enter => enterRects(enter, initial),
@@ -159,6 +164,9 @@ const update_presentation = (initial = false) => {
     update_data_table(girls_table, current_dataset.girls, initial);
     update_data_table(boys_table, current_dataset.boys, initial);
 
+    update_data_table(girls_ranking_table, Object.values(comparison_result).filter(name => name.count > 0), initial);
+    update_data_table(boys_ranking_table, Object.values(comparison_result).filter(name => name.count > 0), initial);
+
 };
 
 const create_table = (name) => {
@@ -173,9 +181,8 @@ const create_table = (name) => {
     dom_table.appendChild(title);
 
     return d3.select(dom_table)
-        .append("svg")
-        .attr("width", 300)
-        .attr("height", 310);
+        .append("div")
+        .attr("class", "Data");
 };
 
 const init = (data) => {
@@ -188,6 +195,8 @@ const init = (data) => {
 
     girls_table = create_table("girls");
     boys_table = create_table("boys");
+    girls_ranking_table = create_table("girls rankings");
+    boys_ranking_table = create_table("boys rankings");
 
     display_year = document.createElement("p");
     display_year.className = "Year";
