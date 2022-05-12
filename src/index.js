@@ -1,8 +1,5 @@
 /* global d3 */
 
-import * as Data_quality from "./data_quality_critieria.js";
-
-
 const COLOR_BLUE = "#11abc1";
 const COLOR_DEFAULT = "#ddedf4";
 const COLOR_GREEN = "#4bac3f";
@@ -242,7 +239,6 @@ const init = (data) => {
 };
 
 fetch("dat/gfds.json").then(response => response.json())
-    //.then((data) => Data_quality.establish(data))
     .then((result) => init(result));
 
 // TODO
