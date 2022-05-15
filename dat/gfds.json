@@ -8,47 +8,47 @@
 	"boys":[{"name":"Paul","pos":1},{"name":"Elias","pos":2},{"name":"Noah","pos":3},{"name":"Alexander","pos":4},{"name":"Maximilian","pos":5},{"name":"Matt(h)eo/Mat(h)eo","pos":6},{"name":"Leon/Léon","pos":7},{"name":"Louis/Luis","pos":8},{"name":"Emil","pos":9},{"name":"Henry/Henri","pos":10}]
 },{
     "year":"2019",
-    "girls":[{"name":"Marie","pos":1},{"name":"Sophie/Sofie","pos":2},{"name":"Maria","pos":3},{"name":"Sophia/Sofia","pos":4},{"name":"Emilia","pos":5},{"name":"Emma","pos":6},{"name":"Hannah/Hanna","pos":7},{"name":"Mia","pos":8},{"name":"Anna","pos":9},{"name":"Charlotte","pos":10}],
+    "girls":[{"name":"Marie","pos":1},{"name":"Sophie/Sofie","pos":2},{"name":"Maria","pos":3},{"name":"Sophia/Sofia","pos":4},{"name":"Emilia","pos":5},{"name":"Emma","pos":6},{"name":"Hannah/Hanna","pos":7},{"name":"Mia","pos":8},{"name":"Anna/Anne","pos":9},{"name":"Charlotte","pos":10}],
 	"boys":[{"name":"Paul","pos":1},{"name":"Alexander","pos":2},{"name":"Maximilian","pos":3},{"name":"Elias","pos":4},{"name":"Noah","pos":5},{"name":"Louis/Luis","pos":6},{"name":"Leon/Léon","pos":7},{"name":"Ben","pos":8},{"name":"Henry/Henri","pos":9},{"name":"Emil","pos":10}]
 },{
     "year":"2018",
-    "girls":[{"name":"Marie","pos":1},{"name":"Sophie/Sofie","pos":2},{"name":"Maria","pos":3},{"name":"Sophia/Sofia","pos":4},{"name":"Emilia","pos":5},{"name":"Emma","pos":6},{"name":"Hannah/Hanna","pos":7},{"name":"Mia","pos":8},{"name":"Anna","pos":9},{"name":"Johanna","pos":10}],
+    "girls":[{"name":"Marie","pos":1},{"name":"Sophie/Sofie","pos":2},{"name":"Maria","pos":3},{"name":"Sophia/Sofia","pos":4},{"name":"Emilia","pos":5},{"name":"Emma","pos":6},{"name":"Hannah/Hanna","pos":7},{"name":"Mia","pos":8},{"name":"Anna/Anne","pos":9},{"name":"Johanna","pos":10}],
 	"boys":[{"name":"Paul","pos":1},{"name":"Alexander","pos":2},{"name":"Maximilian","pos":3},{"name":"Elias","pos":4},{"name":"Ben","pos":5},{"name":"Louis/Luis","pos":6},{"name":"Leon/Léon","pos":7},{"name":"Noah","pos":8},{"name":"Henry/Henri","pos":9},{"name":"Felix","pos":10}]
 },{
     "year":"2017",
-    "girls":[{"name":"Marie","pos":1},{"name":"Sophie/Sofie","pos":2},{"name":"Maria","pos":3},{"name":"Sophia/Sofia","pos":4},{"name":"Emilia","pos":5},{"name":"Emma","pos":6},{"name":"Hannah/Hanna","pos":7},{"name":"Anna","pos":8},{"name":"Mia","pos":9},{"name":"Luisa/Louisa","pos":10}],
+    "girls":[{"name":"Marie","pos":1},{"name":"Sophie/Sofie","pos":2},{"name":"Maria","pos":3},{"name":"Sophia/Sofia","pos":4},{"name":"Emilia","pos":5},{"name":"Emma","pos":6},{"name":"Hannah/Hanna","pos":7},{"name":"Anna/Anne","pos":8},{"name":"Mia","pos":9},{"name":"Luisa/Louisa","pos":10}],
 	"boys":[{"name":"Maximilian","pos":1},{"name":"Alexander","pos":2},{"name":"Paul","pos":3},{"name":"Elias","pos":4},{"name":"Ben","pos":5},{"name":"Noah","pos":6},{"name":"Leon/Léon","pos":7},{"name":"Louis/Luis","pos":8},{"name":"Jonas","pos":9},{"name":"Felix","pos":10}]
 },{
     "year":"2016",
-    "girls":[{"name":"Marie","pos":1},{"name":"Sophie/Sofie","pos":2},{"name":"Sophia/Sofia","pos":3},{"name":"Maria","pos":4},{"name":"Emma","pos":5},{"name":"Emilia","pos":6},{"name":"Mia","pos":7},{"name":"Anna","pos":8},{"name":"Hannah/Hanna","pos":9},{"name":"Johanna","pos":10}],
+    "girls":[{"name":"Marie","pos":1},{"name":"Sophie/Sofie","pos":2},{"name":"Sophia/Sofia","pos":3},{"name":"Maria","pos":4},{"name":"Emma","pos":5},{"name":"Emilia","pos":6},{"name":"Mia","pos":7},{"name":"Anna/Anne","pos":8},{"name":"Hannah/Hanna","pos":9},{"name":"Johanna","pos":10}],
 	"boys":[{"name":"Elias","pos":1},{"name":"Alexander","pos":2},{"name":"Maximilian","pos":3},{"name":"Paul","pos":4},{"name":"Leon/Léon","pos":5},{"name":"Louis/Luis","pos":6},{"name":"Ben","pos":7},{"name":"Jonas","pos":8},{"name":"Noah/Noa","pos":9},{"name":"Luca/Luka","pos":10}]
 },{
 	"year":"2015",
-	"girls":[{"name":"Sophie/Sofie","pos":1},{"name":"Marie","pos":2},{"name":"Sophia/Sofia","pos":3},{"name":"Maria","pos":4},{"name":"Mia","pos":5},{"name":"Emma","pos":6},{"name":"Hannah/Hanna","pos":7},{"name":"Emilia","pos":8},{"name":"Anna","pos":9},{"name":"Johanna","pos":10}],
+	"girls":[{"name":"Sophie/Sofie","pos":1},{"name":"Marie","pos":2},{"name":"Sophia/Sofia","pos":3},{"name":"Maria","pos":4},{"name":"Mia","pos":5},{"name":"Emma","pos":6},{"name":"Hannah/Hanna","pos":7},{"name":"Emilia","pos":8},{"name":"Anna/Anne","pos":9},{"name":"Johanna","pos":10}],
 	"boys":[{"name":"Maximilian","pos":1},{"name":"Alexander","pos":2},{"name":"Elias","pos":3},{"name":"Paul","pos":4},{"name":"Leon/Léon","pos":5},{"name":"Louis/Luis","pos":6},{"name":"Ben","pos":7},{"name":"Luca/Luka","pos":8},{"name":"Noah/Noa","pos":9},{"name":"Jonas","pos":10}]
 },{
 	"year":"2014",
-	"girls":[{"name":"Sophie/Sofie","pos":1},{"name":"Marie","pos":2},{"name":"Sophia/Sofia","pos":3},{"name":"Maria","pos":4},{"name":"Emma","pos":5},{"name":"Mia","pos":6},{"name":"Hannah/Hanna","pos":7},{"name":"Emilia","pos":8},{"name":"Anna","pos":9},{"name":"Johanna","pos":10}],
+	"girls":[{"name":"Sophie/Sofie","pos":1},{"name":"Marie","pos":2},{"name":"Sophia/Sofia","pos":3},{"name":"Maria","pos":4},{"name":"Emma","pos":5},{"name":"Mia","pos":6},{"name":"Hannah/Hanna","pos":7},{"name":"Emilia","pos":8},{"name":"Anna/Anne","pos":9},{"name":"Johanna","pos":10}],
 	"boys":[{"name":"Maximilian","pos":1},{"name":"Alexander","pos":2},{"name":"Paul","pos":3},{"name":"Elias","pos":4},{"name":"Louis/Luis","pos":5},{"name":"Luca/Luka","pos":6},{"name":"Ben","pos":7},{"name":"Leon/Léon","pos":8},{"name":"Lukas/Lucas","pos":9},{"name":"Noah/Noa","pos":10}]
 },{
 	"year":"2013",
-	"girls":[{"name":"Sophie/Sofie","pos":1},{"name":"Marie","pos":2},{"name":"Sophia/Sofia","pos":3},{"name":"Maria","pos":4},{"name":"Mia","pos":5},{"name":"Emma","pos":6},{"name":"Hannah/Hanna","pos":7},{"name":"Anna","pos":8},{"name":"Emilia","pos":9},{"name":"Johanna","pos":10}],
+	"girls":[{"name":"Sophie/Sofie","pos":1},{"name":"Marie","pos":2},{"name":"Sophia/Sofia","pos":3},{"name":"Maria","pos":4},{"name":"Mia","pos":5},{"name":"Emma","pos":6},{"name":"Hannah/Hanna","pos":7},{"name":"Anna/Anne","pos":8},{"name":"Emilia","pos":9},{"name":"Johanna","pos":10}],
 	"boys":[{"name":"Maximilian","pos":1},{"name":"Alexander","pos":2},{"name":"Paul","pos":3},{"name":"Luca/Luka","pos":4},{"name":"Ben","pos":5},{"name":"Louis/Luis","pos":6},{"name":"Elias","pos":7},{"name":"Leon/Léon","pos":8},{"name":"Lukas/Lucas","pos":9},{"name":"Noah","pos":10}]
 },{
 	"year":"2012",
-	"girls":[{"name":"Sophie/Sofie","pos":1},{"name":"Marie","pos":2},{"name":"Maria","pos":3},{"name":"Sophia/Sofia","pos":4},{"name":"Mia","pos":5},{"name":"Emma","pos":6},{"name":"Hannah/Hanna","pos":7},{"name":"Anna","pos":8},{"name":"Johanna","pos":9},{"name":"Luisa/Louisa","pos":10}],
+	"girls":[{"name":"Sophie/Sofie","pos":1},{"name":"Marie","pos":2},{"name":"Maria","pos":3},{"name":"Sophia/Sofia","pos":4},{"name":"Mia","pos":5},{"name":"Emma","pos":6},{"name":"Hannah/Hanna","pos":7},{"name":"Anna/Anne","pos":8},{"name":"Johanna","pos":9},{"name":"Luisa/Louisa","pos":10}],
 	"boys":[{"name":"Luca/Luka","pos":1},{"name":"Maximilian","pos":2},{"name":"Alexander","pos":3},{"name":"Paul","pos":4},{"name":"Ben","pos":5},{"name":"Leon/Léon","pos":6},{"name":"Lukas/Lucas","pos":7},{"name":"Elias","pos":8},{"name":"Louis/Luis","pos":9},{"name":"Jonas","pos":10}]
 },{
 	"year":"2011",
-	"girls":[{"name":"Sophie/Sofie","pos":1},{"name":"Marie","pos":2},{"name":"Maria","pos":3},{"name":"Mia","pos":4},{"name":"Sophia/Sofia","pos":5},{"name":"Emma","pos":6},{"name":"Anna","pos":7},{"name":"Hannah/Hanna","pos":8},{"name":"Johanna","pos":9},{"name":"Leonie","pos":10}],
+	"girls":[{"name":"Sophie/Sofie","pos":1},{"name":"Marie","pos":2},{"name":"Maria","pos":3},{"name":"Mia","pos":4},{"name":"Sophia/Sofia","pos":5},{"name":"Emma","pos":6},{"name":"Anna/Anne","pos":7},{"name":"Hannah/Hanna","pos":8},{"name":"Johanna","pos":9},{"name":"Leonie","pos":10}],
 	"boys":[{"name":"Maximilian","pos":1},{"name":"Alexander","pos":2},{"name":"Paul","pos":3},{"name":"Leon/Léon","pos":4},{"name":"Ben","pos":5},{"name":"Lukas/Lucas","pos":6},{"name":"Luca/Luka","pos":7},{"name":"Louis/Luis","pos":8},{"name":"Elias","pos":9},{"name":"Jonas","pos":10}]
 },{
 	"year":"2010",
-	"girls":[{"name":"Sophie/Sofie","pos":1},{"name":"Marie","pos":2},{"name":"Maria","pos":3},{"name":"Sophia/Sofia","pos":4},{"name":"Mia","pos":5},{"name":"Anna","pos":6},{"name":"Lena","pos":7},{"name":"Emma","pos":8},{"name":"Hannah/Hanna","pos":9},{"name":"Johanna","pos":10}],
+	"girls":[{"name":"Sophie/Sofie","pos":1},{"name":"Marie","pos":2},{"name":"Maria","pos":3},{"name":"Sophia/Sofia","pos":4},{"name":"Mia","pos":5},{"name":"Anna/Anne","pos":6},{"name":"Lena","pos":7},{"name":"Emma","pos":8},{"name":"Hannah/Hanna","pos":9},{"name":"Johanna","pos":10}],
 	"boys":[{"name":"Maximilian","pos":1},{"name":"Alexander","pos":2},{"name":"Paul","pos":3},{"name":"Leon/Léon","pos":4},{"name":"Lukas/Lucas","pos":5},{"name":"Luca/Luka","pos":6},{"name":"Elias","pos":7},{"name":"Louis/Luis","pos":8},{"name":"Jonas","pos":9},{"name":"Felix","pos":10}]
 },{
 	"year":"2009",
-	"girls":[{"name":"Marie","pos":1},{"name":"Sophie/Sofie","pos":2},{"name":"Maria","pos":3},{"name":"Anna","pos":4},{"name":"Emma","pos":5},{"name":"Mia","pos":6},{"name":"Sophia/Sofia","pos":7},{"name":"Leonie","pos":8},{"name":"Lena","pos":9},{"name":"Johanna","pos":10}],
+	"girls":[{"name":"Marie","pos":1},{"name":"Sophie/Sofie","pos":2},{"name":"Maria","pos":3},{"name":"Anna/Anne","pos":4},{"name":"Emma","pos":5},{"name":"Mia","pos":6},{"name":"Sophia/Sofia","pos":7},{"name":"Leonie","pos":8},{"name":"Lena","pos":9},{"name":"Johanna","pos":10}],
 	"boys":[{"name":"Maximilian","pos":1},{"name":"Alexander","pos":2},{"name":"Leon/Léon","pos":3},{"name":"Paul","pos":4},{"name":"Luca/Luka","pos":5},{"name":"Elias","pos":6},{"name":"Felix","pos":7},{"name":"Lukas/Lucas","pos":8},{"name":"Jonas","pos":9},{"name":"David","pos":10}]
 },{
 	"year":"2008",
@@ -68,31 +68,31 @@
 	"boys":[{"name":"Alexander","pos":1},{"name":"Maximilian","pos":2},{"name":"Leon/Léon","pos":3},{"name":"Lukas/Lucas","pos":4},{"name":"Luca","pos":5},{"name":"Paul","pos":6},{"name":"Jonas","pos":7},{"name":"Felix","pos":8},{"name":"Tim","pos":9},{"name":"David","pos":10}]
 },{
 	"year":"2004",
-	"girls":[{"name":"Marie","pos":1},{"name":"Sophie","pos":2},{"name":"Maria","pos":3},{"name":"Anna/Anne","pos":4},{"name":"Leonie","pos":5},{"name":"Lea/Leah","pos":6},{"name":"Laura","pos":7},{"name":"Lena","pos":8},{"name":"Katharina","pos":9},{"name":"Johanna","pos":10}],
+	"girls":[{"name":"Marie","pos":1},{"name":"Sophie/Sofie","pos":2},{"name":"Maria","pos":3},{"name":"Anna/Anne","pos":4},{"name":"Leonie","pos":5},{"name":"Lea/Leah","pos":6},{"name":"Laura","pos":7},{"name":"Lena","pos":8},{"name":"Katharina","pos":9},{"name":"Johanna","pos":10}],
 	"boys":[{"name":"Maximilian","pos":1},{"name":"Alexander","pos":2},{"name":"Paul","pos":3},{"name":"Leon/Léon","pos":4},{"name":"Lukas/Lucas","pos":5},{"name":"Luca","pos":6},{"name":"Felix","pos":7},{"name":"Jonas","pos":8},{"name":"Tim","pos":9},{"name":"David","pos":10}]
 },{
 	"year":"2003",
-	"girls":[{"name":"Marie","pos":1},{"name":"Sophie","pos":2},{"name":"Maria","pos":3},{"name":"Anna/Anne","pos":4},{"name":"Lea/Leah","pos":5},{"name":"Laura","pos":6},{"name":"Lena","pos":7},{"name":"Leonie","pos":8},{"name":"Julia","pos":9},{"name":"Sara/Sarah","pos":10}],
+	"girls":[{"name":"Marie","pos":1},{"name":"Sophie/Sofie","pos":2},{"name":"Maria","pos":3},{"name":"Anna/Anne","pos":4},{"name":"Lea/Leah","pos":5},{"name":"Laura","pos":6},{"name":"Lena","pos":7},{"name":"Leonie","pos":8},{"name":"Julia","pos":9},{"name":"Sara/Sarah","pos":10}],
 	"boys":[{"name":"Maximilian","pos":1},{"name":"Alexander","pos":2},{"name":"Leon/Léon","pos":3},{"name":"Paul","pos":4},{"name":"Lukas/Lucas","pos":5},{"name":"Felix","pos":6},{"name":"Luca","pos":7},{"name":"David","pos":8},{"name":"Tim","pos":9},{"name":"Jonas","pos":10}]
 },{
 	"year":"2002",
-	"girls":[{"name":"Marie","pos":1},{"name":"Sophie","pos":2},{"name":"Maria","pos":3},{"name":"Anna/Anne","pos":4},{"name":"Laura","pos":5},{"name":"Lea/Leah","pos":6},{"name":"Katharina","pos":7},{"name":"Sara/Sarah","pos":8},{"name":"Julia","pos":9},{"name":"Lena","pos":10}],
+	"girls":[{"name":"Marie","pos":1},{"name":"Sophie/Sofie","pos":2},{"name":"Maria","pos":3},{"name":"Anna/Anne","pos":4},{"name":"Laura","pos":5},{"name":"Lea/Leah","pos":6},{"name":"Katharina","pos":7},{"name":"Sara/Sarah","pos":8},{"name":"Julia","pos":9},{"name":"Lena","pos":10}],
 	"boys":[{"name":"Alexander","pos":1},{"name":"Maximilian","pos":2},{"name":"Paul","pos":3},{"name":"Leon/Léon","pos":4},{"name":"Lukas/Lucas","pos":5},{"name":"Jonas","pos":6},{"name":"Tim","pos":7},{"name":"David","pos":8},{"name":"Niklas","pos":9},{"name":"Luca","pos":10}]
 },{
 	"year":"2001",
-	"girls":[{"name":"Marie","pos":1},{"name":"Sophie","pos":2},{"name":"Maria","pos":3},{"name":"Anna/Anne","pos":4},{"name":"Laura","pos":5},{"name":"Michelle","pos":6},{"name":"Lea/Leah","pos":7},{"name":"Julia","pos":8},{"name":"Sara/Sarah","pos":9},{"name":"Lisa","pos":10}],
+	"girls":[{"name":"Marie","pos":1},{"name":"Sophie/Sofie","pos":2},{"name":"Maria","pos":3},{"name":"Anna/Anne","pos":4},{"name":"Laura","pos":5},{"name":"Michelle","pos":6},{"name":"Lea/Leah","pos":7},{"name":"Julia","pos":8},{"name":"Sara/Sarah","pos":9},{"name":"Lisa","pos":10}],
 	"boys":[{"name":"Leon/Léon","pos":1},{"name":"Alexander","pos":2},{"name":"Maximilian","pos":3},{"name":"Lukas/Lucas","pos":4},{"name":"Paul","pos":5},{"name":"Tim","pos":6},{"name":"Jonas","pos":7},{"name":"Niklas","pos":8},{"name":"Jan","pos":9},{"name":"Daniel","pos":10}]
 },{
 	"year":"2000",
-	"girls":[{"name":"Marie","pos":1},{"name":"Sophie","pos":2},{"name":"Maria","pos":3},{"name":"Anna/Anne","pos":4},{"name":"Laura","pos":5},{"name":"Lea/Leah","pos":6},{"name":"Julia","pos":7},{"name":"Michelle","pos":8},{"name":"Katharina","pos":9},{"name":"Sara/Sarah","pos":10}],
+	"girls":[{"name":"Marie","pos":1},{"name":"Sophie/Sofie","pos":2},{"name":"Maria","pos":3},{"name":"Anna/Anne","pos":4},{"name":"Laura","pos":5},{"name":"Lea/Leah","pos":6},{"name":"Julia","pos":7},{"name":"Michelle","pos":8},{"name":"Katharina","pos":9},{"name":"Sara/Sarah","pos":10}],
 	"boys":[{"name":"Alexander","pos":1},{"name":"Maximilian","pos":2},{"name":"Lukas/Lucas","pos":3},{"name":"Leon/Léon","pos":4},{"name":"Tim","pos":5},{"name":"Paul","pos":6},{"name":"Niklas","pos":7},{"name":"Jonas","pos":8},{"name":"Daniel","pos":9},{"name":"Jan","pos":10}]
 },{
 	"year":"1999",
-	"girls":[{"name":"Marie","pos":1},{"name":"Maria","pos":2},{"name":"Sophie","pos":3},{"name":"Anna/Anne","pos":4},{"name":"Laura","pos":5},{"name":"Sara/Sarah","pos":6},{"name":"Julia","pos":7},{"name":"Michelle","pos":8},{"name":"Lea/Leah","pos":9},{"name":"Katharina","pos":10}],
+	"girls":[{"name":"Marie","pos":1},{"name":"Maria","pos":2},{"name":"Sophie/Sofie","pos":3},{"name":"Anna/Anne","pos":4},{"name":"Laura","pos":5},{"name":"Sara/Sarah","pos":6},{"name":"Julia","pos":7},{"name":"Michelle","pos":8},{"name":"Lea/Leah","pos":9},{"name":"Katharina","pos":10}],
 	"boys":[{"name":"Lukas/Lucas","pos":1},{"name":"Alexander","pos":2},{"name":"Maximilian","pos":3},{"name":"Leon/Léon","pos":4},{"name":"Tim","pos":5},{"name":"Daniel","pos":6},{"name":"Niklas","pos":7},{"name":"Jan","pos":8},{"name":"Philipp","pos":9},{"name":"Paul","pos":10}]
 },{
 	"year":"1998",
-	"girls":[{"name":"Maria","pos":1},{"name":"Julia","pos":2},{"name":"Anna/Anne","pos":3},{"name":"Sophie","pos":4},{"name":"Marie","pos":5},{"name":"Laura","pos":6},{"name":"Lisa","pos":7},{"name":"Vanessa","pos":8},{"name":"Sara/Sarah","pos":9},{"name":"Katharina","pos":10}],
+	"girls":[{"name":"Maria","pos":1},{"name":"Julia","pos":2},{"name":"Anna/Anne","pos":3},{"name":"Sophie/Sofie","pos":4},{"name":"Marie","pos":5},{"name":"Laura","pos":6},{"name":"Lisa","pos":7},{"name":"Vanessa","pos":8},{"name":"Sara/Sarah","pos":9},{"name":"Katharina","pos":10}],
 	"boys":[{"name":"Lukas/Lucas","pos":1},{"name":"Alexander","pos":2},{"name":"Maximilian","pos":3},{"name":"Daniel","pos":4},{"name":"Philipp","pos":5},{"name":"Felix","pos":6},{"name":"Tim","pos":7},{"name":"Jan","pos":8},{"name":"Florian","pos":9},{"name":"Jonas","pos":10}]
 },{
 	"year":"1997",
@@ -104,7 +104,7 @@
 	"boys":[{"name":"Maximilian","pos":1},{"name":"Lukas/Lucas","pos":2},{"name":"Philipp","pos":3},{"name":"Florian","pos":4},{"name":"Kevin","pos":5},{"name":"Max","pos":6},{"name":"Felix","pos":7},{"name":"Paul","pos":8},{"name":"Tom","pos":9},{"name":"Erik","pos":10}]
 },{
 	"year":"1996W",
-	"girls":[{"name":"Maria","pos":1},{"name":"Julia","pos":2},{"name":"Katharina","pos":3},{"name":"Anna/Anne","pos":4},{"name":"Laura","pos":5},{"name":"Marie","pos":6},{"name":"Sophie","pos":7},{"name":"Lisa","pos":8},{"name":"Sara/Sarah","pos":9},{"name":"Lena","pos":10}],
+	"girls":[{"name":"Maria","pos":1},{"name":"Julia","pos":2},{"name":"Katharina","pos":3},{"name":"Anna/Anne","pos":4},{"name":"Laura","pos":5},{"name":"Marie","pos":6},{"name":"Sophie/Sofie","pos":7},{"name":"Lisa","pos":8},{"name":"Sara/Sarah","pos":9},{"name":"Lena","pos":10}],
 	"boys":[{"name":"Alexander","pos":1},{"name":"Lukas/Lucas","pos":2},{"name":"Maximilian","pos":3},{"name":"Daniel","pos":4},{"name":"Michael","pos":5},{"name":"Christian","pos":6},{"name":"Philipp","pos":7},{"name":"Marcel","pos":8},{"name":"Jan","pos":9},{"name":"Tobias","pos":10}]
 },{
 	"year":"1995O",
@@ -112,7 +112,7 @@
 	"boys":[{"name":"Maximilian","pos":1},{"name":"Philipp","pos":2},{"name":"Florian","pos":3},{"name":"Felix","pos":4},{"name":"Paul","pos":5},{"name":"Lucas","pos":6},{"name":"Alexander","pos":7},{"name":"Sebastian","pos":8},{"name":"Kevin","pos":9},{"name":"Tobias","pos":10}]
 },{
 	"year":"1995W",
-	"girls":[{"name":"Maria","pos":1},{"name":"Katharina","pos":2},{"name":"Laura","pos":3},{"name":"Julia","pos":4},{"name":"Lisa","pos":5},{"name":"Sara/Sarah","pos":6},{"name":"Marie","pos":7},{"name":"Sophie","pos":8},{"name":"Anna/Anne","pos":9},{"name":"Vanessa","pos":10}],
+	"girls":[{"name":"Maria","pos":1},{"name":"Katharina","pos":2},{"name":"Laura","pos":3},{"name":"Julia","pos":4},{"name":"Lisa","pos":5},{"name":"Sara/Sarah","pos":6},{"name":"Marie","pos":7},{"name":"Sophie/Sofie","pos":8},{"name":"Anna/Anne","pos":9},{"name":"Vanessa","pos":10}],
 	"boys":[{"name":"Alexander","pos":1},{"name":"Maximilian","pos":2},{"name":"Daniel","pos":3},{"name":"Lukas/Lucas","pos":4},{"name":"Philipp","pos":5},{"name":"Christian","pos":6},{"name":"Marcel","pos":7},{"name":"Michael","pos":8},{"name":"Tobias","pos":9},{"name":"Dominik","pos":10}]
 },{
 	"year":"1994O",
@@ -124,7 +124,7 @@
 	"boys":[{"name":"Alexander","pos":1},{"name":"Daniel","pos":2},{"name":"Maximilian","pos":3},{"name":"Christian","pos":4},{"name":"Lukas/Lucas","pos":5},{"name":"Tobias","pos":6},{"name":"Kevin","pos":7},{"name":"Marcel","pos":8},{"name":"Philipp","pos":9},{"name":"Sebastian","pos":10}]
 },{
 	"year":"1993O",
-	"girls":[{"name":"Lisa","pos":1},{"name":"Maria","pos":2},{"name":"Anna/Anne","pos":3},{"name":"Franziska","pos":4},{"name":"Julia","pos":5},{"name":"Sara/Sarah","pos":6},{"name":"Stefanie","pos":7},{"name":"Sophie","pos":8},{"name":"Laura","pos":9},{"name":"Jennifer","pos":10}],
+	"girls":[{"name":"Lisa","pos":1},{"name":"Maria","pos":2},{"name":"Anna/Anne","pos":3},{"name":"Franziska","pos":4},{"name":"Julia","pos":5},{"name":"Sara/Sarah","pos":6},{"name":"Stefanie","pos":7},{"name":"Sophie/Sofie","pos":8},{"name":"Laura","pos":9},{"name":"Jennifer","pos":10}],
 	"boys":[{"name":"Philipp","pos":1},{"name":"Sebastian","pos":2},{"name":"Florian","pos":3},{"name":"Kevin","pos":4},{"name":"Christian","pos":5},{"name":"Martin","pos":6},{"name":"Paul","pos":7},{"name":"Felix","pos":8},{"name":"Tom","pos":9},{"name":"Tobias","pos":10}]
 },{
 	"year":"1993W",
@@ -132,7 +132,7 @@
 	"boys":[{"name":"Daniel","pos":1},{"name":"Alexander","pos":2},{"name":"Tobias","pos":3},{"name":"Christian","pos":4},{"name":"Kevin","pos":5},{"name":"Maximilian","pos":6},{"name":"Michael","pos":7},{"name":"Patrick","pos":8},{"name":"Philipp","pos":9},{"name":"Dennis","pos":10}]
 },{
 	"year":"1992O",
-	"girls":[{"name":"Lisa","pos":1},{"name":"Maria","pos":2},{"name":"Julia","pos":3},{"name":"Franziska","pos":4},{"name":"Anna/Anne","pos":5},{"name":"Stefanie","pos":6},{"name":"Sara/Sarah","pos":7},{"name":"Jennifer","pos":8},{"name":"Sophie","pos":9},{"name":"Jessica","pos":10}],
+	"girls":[{"name":"Lisa","pos":1},{"name":"Maria","pos":2},{"name":"Julia","pos":3},{"name":"Franziska","pos":4},{"name":"Anna/Anne","pos":5},{"name":"Stefanie","pos":6},{"name":"Sara/Sarah","pos":7},{"name":"Jennifer","pos":8},{"name":"Sophie/Sofie","pos":9},{"name":"Jessica","pos":10}],
 	"boys":[{"name":"Philipp","pos":1},{"name":"Patrick","pos":2},{"name":"Christian","pos":3},{"name":"Sebastian","pos":4},{"name":"Kevin","pos":5},{"name":"Florian","pos":6},{"name":"Paul","pos":7},{"name":"Maximilian","pos":8},{"name":"Martin","pos":9},{"name":"David","pos":10}]
 },{
 	"year":"1992W",

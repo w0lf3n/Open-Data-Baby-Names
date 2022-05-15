@@ -9,12 +9,14 @@ const COLOR_RED = "#df3062";
 let baby_names = null;
 let current_index = null;
 const comparison_result = {};
+const girls_statistics = {};
+const boys_statistics = {};
 
 let container = null;
 let girls_table = null;
-let girls_ranking_table = null;
+let girls_statistics_table = null;
 let boys_table = null;
-let boys_ranking_table = null;
+let boys_statistics_table = null;
 let display_year = null;
 
 const get_fill_color = (name) => {
@@ -74,19 +76,19 @@ const update_comparison = (dataset, initial = false) => {
             }
             current.old = current.now;
             current.now = entry.pos;
-            if (current.now === 1) {
-                current.count = current.count + 1;
-            }
         } else {
             // new entry in table
             comparison_result[entry.name] = {
                 best: entry.pos,
                 now: entry.pos,
-                old: (initial) ? entry.pos : 0,
-                count: (entry.pos === 1) ? 1 : 0
+                old: (initial) ? entry.pos : 0
             };
         }
     });
+};
+
+const update_statistics = (statistics, data, initial) => {
+
 };
 
 const update_name_on_exit = (name) => {
@@ -164,8 +166,11 @@ const update_presentation = (initial = false) => {
     update_data_table(girls_table, current_dataset.girls, initial);
     update_data_table(boys_table, current_dataset.boys, initial);
 
-    update_data_table(girls_ranking_table, Object.values(comparison_result).filter(name => name.count > 0), initial);
-    update_data_table(boys_ranking_table, Object.values(comparison_result).filter(name => name.count > 0), initial);
+    update_statistics(girls_statistics, current_dataset.girls, initial);
+    update_statistics(boys_statistics, current_dataset.boys, initial);
+
+    update_data_table(girls_statistics_table, girls_statistics, initial);
+    update_data_table(boys_statistics_table, boys_statistics, initial);
 
 };
 
@@ -195,8 +200,8 @@ const init = (data) => {
 
     girls_table = create_table("girls");
     boys_table = create_table("boys");
-    girls_ranking_table = create_table("girls rankings");
-    boys_ranking_table = create_table("boys rankings");
+    girls_statistics_table = create_table("girls statistics");
+    boys_statistics_table = create_table("boys statistics");
 
     display_year = document.createElement("p");
     display_year.className = "Year";
